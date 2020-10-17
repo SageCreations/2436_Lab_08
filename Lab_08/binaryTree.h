@@ -301,16 +301,43 @@ int binaryTreeType<elemType>::max(int x, int y) const {
 
 template <class elemType>
 int binaryTreeType<elemType>::nodeCount(nodeType<elemType> *p) const {
-  cout << "Write the definition of the function nodeCount." << endl;
+  // Code written by: 
+  // http://www.martinbroadhurst.com/counting-nodes-in-a-binary-tree-recursively.html#:~:text=Counting%20all%20nodes,(for%20the%20root%20itself).
+  // found Oct. 17, 2020
+  // Edited by Edward Cruz 
+  // to match given code variable names
 
-  return 0;
+  int count = 1; // counting the root
+  if (p->lLink != NULL) {
+    count += nodeCount(p->lLink);
+  }
+  if (p->rLink != NULL) {
+    count += nodeCount(p->rLink);
+  }
+  return count;
 }
 
 template <class elemType>
 int binaryTreeType<elemType>::leavesCount(nodeType<elemType> *p) const {
-  cout << "Write the definition of the function leavesCount." << endl;
+  // Code written by: 
+  // http://www.martinbroadhurst.com/counting-nodes-in-a-binary-tree-recursively.html#:~:text=Counting%20all%20nodes,(for%20the%20root%20itself).
+  // found Oct. 17, 2020
+  // Edited by Edward Cruz 
+  // to match given code variable names
 
-  return 0;
+  int count = 0;
+  if (p->lLink == NULL && p->rLink == NULL) {
+    count = 1;
+  }
+  else {
+    if (p->lLink != NULL) {
+      count += leavesCount(p->lLink);
+    }
+    if (p->rLink != NULL) {
+      count += leavesCount(p->rLink);
+    }
+  }
+  return count;
 }
 
 #endif
